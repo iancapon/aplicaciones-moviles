@@ -15,7 +15,7 @@ function Boton(props: buttonProps) {
     )
 }
 
-function Contador() {
+export default function Contador() {
     const [buttonState, setState] = useState(0)
     const aumentarContador = () => {
         setState(buttonState + 1)
@@ -29,19 +29,12 @@ function Contador() {
                 <Boton name="SUMAR" setFun={aumentarContador} />
                 <Boton name="RESET" setFun={resetearContador} />
             </View>
-            <Text style={{ fontSize: 17 }}>Presionaste [ {buttonState} ] veces ... </Text>
+            <Text style={[{ fontSize: 17 },{color:"white"}]}>Presionaste [ {buttonState} ] veces ... </Text>
         </View>
     )
 }
 
-export default function EjercicioContador() {
-    return (
-        <View style={styles.verticalContainer}>
-            <Text style={{ fontSize: 30 }}>Ejercicio de contador</Text>
-            <Contador />
-        </View>
-    );
-}
+
 
 const styles = StyleSheet.create({
     verticalContainer: {
@@ -65,7 +58,7 @@ const styles = StyleSheet.create({
     },
 
     Button: {
-        backgroundColor: 'steelblue',
+        backgroundColor: 'white',
         padding: 7,
         margin: 6,
         borderRadius: 3,

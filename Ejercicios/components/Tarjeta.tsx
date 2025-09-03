@@ -5,7 +5,7 @@ type tarjetaProp = {
     texto: string
 }
 
-function Tarjeta(props: tarjetaProp) {
+export default function Tarjeta(props: tarjetaProp) {
     const [presionado, setPresionado] = useState(false)
 
     const fuePresionado = () => {
@@ -30,39 +30,7 @@ function Tarjeta(props: tarjetaProp) {
     )
 }
 
-type listaProps = {
-    children: React.ReactNode;
-};
 
-function Lista(props: listaProps) {
-    return (
-        <ScrollView contentContainerStyle={styles.Contenedor}>
-            {props.children}
-        </ScrollView>
-    )
-}
-
-
-export default function EjercicioTarjetas() {
-    return (
-        <View style={{ marginTop: 10 }}>
-            <Text style={{ fontSize: 30 }}> Ejercicio de las Tarjetas</Text>
-            <Lista >
-                <Tarjeta texto='hola como va loquita sape ' />
-                <Tarjeta texto='hole' />
-                <Tarjeta texto='holi' />
-                <Tarjeta texto='holo' />
-                <Tarjeta texto='holu' />
-                <Tarjeta texto='hello' />
-                <Tarjeta texto='goodbye' />
-                <Tarjeta texto='uno' />
-                <Tarjeta texto='dos' />
-                <Tarjeta texto='tres' />
-                <Tarjeta texto='cuatrooo' />
-            </Lista>
-        </View>
-    )
-}
 
 const styles = StyleSheet.create({
     Tarjeta: {
