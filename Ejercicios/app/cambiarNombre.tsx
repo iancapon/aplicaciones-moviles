@@ -2,17 +2,17 @@ import { Text, View, StyleSheet, TextInput } from 'react-native'
 import { useRouter } from 'expo-router'
 import Boton from '../components/Boton'
 import { useState, useContext } from 'react'
-import { AppContext } from './_layout'
+import { ContextoPerfil } from './_layout'
 
 
 
 export default function ModalScreen() {
     const router = useRouter()
-    const ctx = useContext(AppContext)
+    const perfil = useContext(ContextoPerfil)
 
-    if (!ctx) return null
+    if (!perfil) return null
 
-    const [nombre, setNombre] = useState(ctx.name)
+    const [nombre, setNombre] = useState(perfil.name)
 
     return (
         <View style={styles.verticalContainer}>
@@ -23,7 +23,7 @@ export default function ModalScreen() {
                 onChangeText={setNombre}
             ></TextInput>
             <Boton name="Guardar" setFun={() => {
-                ctx.setName(nombre)
+                perfil.setName(nombre)
                 router.back()
             }} />
         </View>

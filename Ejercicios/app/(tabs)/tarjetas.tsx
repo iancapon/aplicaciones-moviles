@@ -2,10 +2,6 @@ import { StyleSheet, View, Text, ScrollView } from 'react-native'
 import Tarjeta from '../../components/Tarjeta'
 
 
-type listaProps = {
-    children: React.ReactNode;
-};
-
 export default function EjercicioTarjetas() {
     const tarjetas = [
         "hola como va loquita sape",
@@ -20,7 +16,7 @@ export default function EjercicioTarjetas() {
         <View style={[{ margin: "10%" }, styles.Contenedor]}>
             <Text style={{ fontSize: 30 }}>Tarjetas</Text>
             <ScrollView contentContainerStyle={styles.Contenedor}>
-                {tarjetas.map(mensaje => (<Tarjeta texto={mensaje} />))}
+                {tarjetas.map((mensaje, indice) => (<Tarjeta key={indice} texto={mensaje} />))}
             </ScrollView>
         </View>
     )

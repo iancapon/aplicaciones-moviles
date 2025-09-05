@@ -2,21 +2,21 @@ import { StyleSheet, View, Text } from 'react-native'
 import { Link, useRouter } from 'expo-router'
 import Boton from '../../components/Boton'
 import { useState, useContext } from 'react'
-import { AppContext } from '../_layout'
+import { ContextoPerfil } from '../_layout'
 import EspacioVacio from '../../components/EspacioVacio'
 
 export default function EjercicioPerfil() {
     const router = useRouter();
-    const ctx = useContext(AppContext);
+    const perfil = useContext(ContextoPerfil);
 
-    if (!ctx) return null;
+    if (!perfil) return null;
 
     return (
         <View style={styles.mainContainer}>
             <View style={styles.verticalContainer}>
-                <Text style={{ fontSize: 30 }}>{ctx.name}</Text>
+                <Text style={{ fontSize: 30 }}>{perfil.name}</Text>
                 <EspacioVacio />
-                <Boton name={"Cambiar nombre"} setFun={() => router.push("../cambioDeValor")} />
+                <Boton name={"Cambiar nombre"} setFun={() => router.push("../cambiarNombre")} />
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                 <Boton name={"Detalles de la app"} setFun={() => router.push("../detalles")} />

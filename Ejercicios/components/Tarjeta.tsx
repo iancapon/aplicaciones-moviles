@@ -2,6 +2,7 @@ import { StyleSheet, Pressable, View, Text, ScrollView } from 'react-native'
 import { useState } from 'react'
 
 type tarjetaProp = {
+    key: number
     texto: string
 }
 
