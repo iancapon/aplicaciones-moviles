@@ -1,19 +1,8 @@
 import { StyleSheet, Pressable, View, Text } from 'react-native';
 import { useState } from 'react'
+import Boton from './Boton'
 
 
-type buttonProps = {
-    name: string,
-    setFun: any
-}
-
-function Boton(props: buttonProps) {
-    return (
-        <Pressable style={styles.Button} onPress={props.setFun}>
-            <Text style={{ fontSize: 15 }}>{props.name}</Text>
-        </Pressable>
-    )
-}
 
 export default function Contador() {
     const [buttonState, setState] = useState(0)
@@ -29,7 +18,7 @@ export default function Contador() {
                 <Boton name="SUMAR" setFun={aumentarContador} />
                 <Boton name="RESET" setFun={resetearContador} />
             </View>
-            <Text style={[{ fontSize: 17 },{color:"white"}]}>Presionaste [ {buttonState} ] veces ... </Text>
+            <Text style={[{ fontSize: 17 }, { color: "black" }]}>Presionaste [ {buttonState} ] veces ... </Text>
         </View>
     )
 }
@@ -38,13 +27,13 @@ export default function Contador() {
 
 const styles = StyleSheet.create({
     verticalContainer: {
-        backgroundColor: "lightblue" ,
+        backgroundColor: "lightblue",
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         flexWrap: 'wrap',
         margin: '5%',
-        padding:'7%',
+        padding: '7%',
         borderRadius: 5
     },
 
@@ -55,12 +44,5 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         margin: '10%',
 
-    },
-
-    Button: {
-        backgroundColor: 'white',
-        padding: 7,
-        margin: 6,
-        borderRadius: 3,
     }
 });

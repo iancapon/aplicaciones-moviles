@@ -12,7 +12,7 @@ export default function Tarjeta(props: tarjetaProp) {
         if (presionado) {
             return ({
                 backgroundColor: 'lightgrey',
-                color: 'darkgrey'
+                color: 'black'
             })
         }
         return ({

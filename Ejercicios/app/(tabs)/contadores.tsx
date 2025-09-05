@@ -1,10 +1,10 @@
 import { StyleSheet, View, Text } from 'react-native';
-import Contador from '../components/Contador'
+import Contador from '../../components/Contador'
 
 export default function EjercicioContador() {
     return (
         <View style={styles.verticalContainer}>
-            <Text style={{ fontSize: 30 }}>Ejercicio de contador</Text>
+            <Text style={{ fontSize: 30 }}>Contador</Text>
             <Contador />
         </View>
     );
@@ -16,9 +16,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        flexWrap: 'wrap',
         margin: '5%',
-        padding:'7%',
+        padding:'15%',
         borderRadius: 5
     },
 });
