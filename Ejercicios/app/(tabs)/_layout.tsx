@@ -5,16 +5,16 @@ export default function Layout() {
         <Tabs>
             <Tabs.Screen
                 name="index"
-                options={{ title: "Perfil" }}
+                options={{ title: "Perfil", tabBarLabel: "Perfil" }}
             />
             <Tabs.Screen
                 name="contadores"
-                options={{ title: "Contador" }}
+                options={{ title: "Contador", tabBarLabel: "Contador" }}
 
             />
             <Tabs.Screen
                 name="tarjetas"
-                options={{ title: "Tarjetas" }}
+                options={{ title: "Tarjetas", tabBarLabel: "Tarjetas" }}
             />
         </Tabs>
     );

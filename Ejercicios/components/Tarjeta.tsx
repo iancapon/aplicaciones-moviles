@@ -11,7 +11,7 @@ export default function Tarjeta(props: tarjetaProp) {
     const fuePresionado = () => {
         if (presionado) {
             return ({
-                backgroundColor: 'lightgrey',
+                backgroundColor: 'lightblue',
                 color: 'black'
             })
         }
@@ -40,6 +40,8 @@ const styles = StyleSheet.create({
         minHeight: 100,
         flex: 1,
         borderRadius: 10,
+        borderColor:'darkblue',
+        borderWidth:2,
         margin: 5,
         color: 'white'
     },
