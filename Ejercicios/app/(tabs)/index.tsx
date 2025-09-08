@@ -15,11 +15,11 @@ export default function EjercicioPerfil() {
         <View style={styles.mainContainer}>
             <View style={styles.verticalContainer}>
                 <Text style={{ fontSize: 30 }}>{perfil.name}</Text>
-                <EspacioVacio />
-                <Boton name={"Cambiar nombre"} setFun={() => router.push("../cambiarNombre")} />
+                <EspacioVacio pixels={20} />
+                <Boton name={"Cambiar nombre"} onPress={() => router.push("../cambiarNombre")} />
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                <Boton name={"Detalles de la app"} setFun={() => router.push("../detalles")} />
+                <Boton name={"Detalles de la app"} onPress={() => router.push("../detalles")} />
             </View>
         </View>
     );

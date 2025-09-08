@@ -22,7 +22,7 @@ export default function ModalScreen() {
                 value={nombre}
                 onChangeText={setNombre}
             ></TextInput>
-            <Boton name="Guardar" setFun={() => {
+            <Boton name="Guardar" style = {{borderRadius:10}} onPress={() => {
                 perfil.setName(nombre)
                 router.back()
             }} />

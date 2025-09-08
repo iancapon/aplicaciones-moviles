@@ -1,22 +1,32 @@
-import { Text, Pressable, StyleSheet } from 'react-native'
+import { Text, Pressable, StyleSheet, StyleProp, ViewStyle } from 'react-native'
 
 type buttonProps = {
     name: string,
-    setFun?: any
+    onPress?: () => void;
+    style?: StyleProp<ViewStyle>;
 }
 
 export default function Boton(props: buttonProps) {
     return (
-        <Pressable style={styles.Button} onPress={props.setFun}>
+        <Pressable style={({ pressed }) => [
+            props.style != null ? [styles.button, props.style] : styles.button,
+            pressed ? styles.pressedButton : styles.unpressedButton
+        ]}
+            onPress={props.onPress}>
             <Text style={{ fontSize: 15 }}>{props.name}</Text>
         </Pressable>
     )
 }
 const styles = StyleSheet.create({
-    Button: {
-        backgroundColor: 'white',
+    button: {
         padding: 7,
         margin: 6,
         borderRadius: 3,
+    },
+    pressedButton: {
+        backgroundColor: 'lightgrey',
+    },
+    unpressedButton: {
+        backgroundColor: 'white',
     }
 });
