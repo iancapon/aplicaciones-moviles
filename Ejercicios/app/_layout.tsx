@@ -14,7 +14,7 @@ export default function RootLayout() {
             <Stack>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-                <Stack.Screen name="detalles" />
+                <Stack.Screen name="detalles" options= {{presentation: "modal", animation: "slide_from_bottom",}} />
 
                 <Stack.Screen name="cambiarNombre" options={{ presentation: "modal", title: "Cambiar el nombre", animation: "slide_from_bottom", }} />
             </Stack>
