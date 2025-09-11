@@ -1,48 +1,32 @@
 import { Text, Pressable, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native'
-import { ReactNode, useState } from 'react'
+import { ReactNode } from 'react'
 
 type buttonProps = {
     name?: string,
     onLongPress?: () => void
     onPress?: () => void;
-    viewStyle?: StyleProp<ViewStyle>;
-    pressedViewStyle?: StyleProp<ViewStyle>;
-    textStyle?: StyleProp<TextStyle>
-    pressedTextStyle?: StyleProp<TextStyle>
-    keepActive?: boolean
+    onPressIn?: () => void
+    onPressOut?: () => void
     children?: ReactNode
+    viewStyle?: StyleProp<ViewStyle>;
+    textStyle?: StyleProp<TextStyle>
+
 }
 
 export default function Boton(props: buttonProps) {
     const unpressedView = props.viewStyle != null ? [styles.button, props.viewStyle] : styles.button
-    const pressedView = props.pressedViewStyle != null ? [unpressedView, props.pressedViewStyle] : [unpressedView, styles.pressedbutton]
     const unpressedText = props.textStyle != null ? [styles.text, props.textStyle] : styles.text
-    const pressedText = props.pressedTextStyle != null ? [unpressedText, props.pressedTextStyle] : [unpressedText, styles.text]
 
-    const [active, setActive] = useState(false)
-    if (props.keepActive) {
-        return (
-            <Pressable
-                onPressIn={() => setActive(!active)}
-                onPress={props.onPress}
-                onLongPress={props.onLongPress}
-                style={() => ([unpressedView, active ? pressedView : unpressedView])}
-            >
-                {props.children}
-                <Text style={[unpressedText, active ? pressedText : unpressedText]}>{props.name}</Text>
-            </Pressable>
-        )
-    }
     return (
         <Pressable
-            onPressIn={() => setActive(true)}
-            onPressOut={() => setActive(false)}
             onPress={props.onPress}
             onLongPress={props.onLongPress}
-            style={() => ([unpressedView, active ? pressedView : unpressedView])}
+            onPressIn={props.onPressIn}
+            onPressOut={props.onPressOut}
+            style={({ pressed }) => [unpressedView, pressed ? { opacity: 0.5 } : { opacity: 1 }]}
         >
             {props.children}
-            <Text style={[unpressedText, active ? pressedText : unpressedText]}>{props.name}</Text>
+            <Text style={[unpressedText]}>{props.name}</Text>
         </Pressable>
     )
 }
@@ -53,14 +37,10 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         backgroundColor: 'white',
     },
-    pressedbutton: {
-        backgroundColor: 'lightgrey',
-    },
+
     text: {
         color: "black",
         fontSize: 15
     },
-    pressedText: {
-        color: "white",
-    }
+
 });
