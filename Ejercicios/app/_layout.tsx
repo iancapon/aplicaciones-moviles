@@ -14,9 +14,9 @@ export default function RootLayout() {
             <Stack>
                 <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-                <Stack.Screen name="detalles" options= {{presentation: "modal", animation: "slide_from_bottom",}} />
+                <Stack.Screen name="detalles" options= {{presentation: "modal", animation:"fade_from_bottom"}} />
 
-                <Stack.Screen name="cambiarNombre" options={{ presentation: "modal", title: "Cambiar el nombre", animation: "slide_from_bottom", }} />
+                <Stack.Screen name="cambiarNombre" options={{ presentation: "transparentModal", animation:"fade",headerShown: false }} />
             </Stack>
         </ContextoPerfil.Provider>
     );
