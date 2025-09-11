@@ -15,8 +15,8 @@ export default function Contador() {
     return (
         <View >
             <View style={styles.horizontalContainer}>
-                <Boton name="SUMAR" viewStyle={{}} onPress={aumentarContador}  />
-                <Boton name="RESET" onPress={resetearContador} />
+                <Boton name="SUMAR" viewStyle={{backgroundColor:"lightgreen"}} onPress={aumentarContador}  />
+                <Boton name="RESET" viewStyle={{backgroundColor:"lightgreen"}} onPress={resetearContador} />
             </View>
             <Text style={[{ fontSize: 17 }, { color: "black" }]}>Presionaste [ {buttonState} ] veces ... </Text>
         </View>

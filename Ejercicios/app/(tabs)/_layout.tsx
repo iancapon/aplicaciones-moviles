@@ -5,6 +5,12 @@ export default function Layout() {
     return (
         <Tabs>
             <Tabs.Screen
+                name="galeria"
+                options={{ title: "Galería", tabBarLabel: "Galería"
+                    , tabBarIcon:({size})=> <Ionicons name="camera" size={size}/>
+                 }}
+            />
+            <Tabs.Screen
                 name="index"
                 options={{ title: "Perfil", tabBarLabel: "Perfil" 
                     , tabBarIcon:({size})=> <Ionicons name="airplane" size={size}/>

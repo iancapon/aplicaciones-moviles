@@ -1,14 +1,15 @@
 import { Text, Pressable, StyleSheet, StyleProp, ViewStyle, TextStyle } from 'react-native'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 
 type buttonProps = {
-    name: string,
+    name?: string,
     onPress?: () => void;
     viewStyle?: StyleProp<ViewStyle>;
     pressedViewStyle?: StyleProp<ViewStyle>;
     textStyle?: StyleProp<TextStyle>
     pressedTextStyle?: StyleProp<TextStyle>
     keepActive?: boolean
+    children?: ReactNode
 }
 
 export default function Boton(props: buttonProps) {
@@ -18,26 +19,26 @@ export default function Boton(props: buttonProps) {
     const pressedText = props.pressedTextStyle != null ? [unpressedText, props.pressedTextStyle] : [unpressedText, styles.text]
 
     const [active, setActive] = useState(false)
-
+    if (props.keepActive) {
+        return (
+            <Pressable
+                onPressIn={() => setActive(!active)}
+                onPress={props.onPress}
+                style={() => ([unpressedView, active ? pressedView : unpressedView])}
+            >
+                {props.children}
+                <Text style={[unpressedText, active ? pressedText : unpressedText]}>{props.name}</Text>
+            </Pressable>
+        )
+    }
     return (
         <Pressable
-            onPressIn={() => {
-                if (props.keepActive === true) {
-                    setActive(!active)
-                }
-                else {
-                    setActive(true)
-                }
-            }}
-            onPressOut={() => {
-                if (props.keepActive !== true) {
-                    setActive(false)
-                }
-            }}
+            onPressIn={() => setActive(true)}
+            onPressOut={() => setActive(false)}
             onPress={props.onPress}
-
             style={() => ([unpressedView, active ? pressedView : unpressedView])}
         >
+            {props.children}
             <Text style={[unpressedText, active ? pressedText : unpressedText]}>{props.name}</Text>
         </Pressable>
     )
