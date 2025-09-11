@@ -25,6 +25,7 @@ export default function Boton(props: buttonProps) {
             <Pressable
                 onPressIn={() => setActive(!active)}
                 onPress={props.onPress}
+                onLongPress={props.onLongPress}
                 style={() => ([unpressedView, active ? pressedView : unpressedView])}
             >
                 {props.children}
