@@ -3,6 +3,7 @@ import { ReactNode, useState } from 'react'
 
 type buttonProps = {
     name?: string,
+    onLongPress?: () => void
     onPress?: () => void;
     viewStyle?: StyleProp<ViewStyle>;
     pressedViewStyle?: StyleProp<ViewStyle>;
@@ -36,6 +37,7 @@ export default function Boton(props: buttonProps) {
             onPressIn={() => setActive(true)}
             onPressOut={() => setActive(false)}
             onPress={props.onPress}
+            onLongPress={props.onLongPress}
             style={() => ([unpressedView, active ? pressedView : unpressedView])}
         >
             {props.children}
