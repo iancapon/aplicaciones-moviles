@@ -17,7 +17,7 @@ export default function HomeScreen() {
   const router = useRouter()
   const [modalVisible, setModalVisible] = useState(false)
   const [mensaje, setMensaje] = useState("")
-  const [parametro, setParametro] = useState("joder")
+  const [parametro, setParametro] = useState("Ian")
   const handleUser = async () => {
     setMensaje("...")
     setModalVisible(true)
