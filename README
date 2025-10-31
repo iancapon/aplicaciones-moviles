@@ -1,1 +1,10 @@
 Ejercicios de la clase
+
+en /mi-app:
+  npm install para instalar el servidor
+  npx prisma migrate dev para generar el cliente prisma
+  npm run dev para correr el servidor
+  cd /mi-app -> ahi está la aplicacion
+    npm install dentro de esa carpeta tambien para instalar la aplicacion
+    npm start para abrir el metro bundler
+    aparece un qr -> escanear con el celular, va a abrir la app en Expo-go (instalar previamente desde la app store)
