@@ -8,6 +8,8 @@ export type MyThemeColorType = {
   accent: string
   card: string
   button: string
+  overlay: string
+  navbar: string
 }
 
 export const myLightTheme: MyThemeColorType = {
@@ -20,6 +22,8 @@ export const myLightTheme: MyThemeColorType = {
   accent: '#EF5350',      // rojo brillante
   card: '#FFFFFF',        // blanco puro
   button: '#C62828',      // rojo sólido para botones
+  overlay: '#fac1c1b4',
+  navbar: '#1A0000'
 }
 
 export const myDarkTheme: MyThemeColorType = {
@@ -32,4 +36,6 @@ export const myDarkTheme: MyThemeColorType = {
   accent: '#EF5350',      // rojo claro que destaca
   card: '#2A0000',        // fondo de tarjeta más claro
   button: '#C62828',      // rojo fuerte que sobresale en oscuro
+  overlay: '#831515b4',
+  navbar: '#FFF8F8'
 }

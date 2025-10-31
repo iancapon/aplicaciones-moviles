@@ -38,7 +38,7 @@ export default function IndexTab() {
     const { currentTheme, theme, setTheme, toggleTheme } = useMyTheme()
 
     return (
-        <View style={[styles.contentContainer, { flex: 1, padding: 10, borderWidth: 1 }]}>
+        <View style={[styles.contentContainer, { flex: 1, padding: 10, borderWidth: 0 }]}>
             <ScrollView style={[styles.contentContainer, { padding: 10 }]}>
                 {/* -- atributos -- */}
                 <Text style={[styles.title, { fontStyle: "italic" }]}>atributos</Text>

@@ -2,6 +2,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { createContext, useState, useContext, useEffect } from 'react';
 import ThemedHeader from '@/components/my-theme/my-theme-header';
+import * as SystemUI from 'expo-system-ui';
 
 import { MyThemeColorType, myLightTheme, myDarkTheme } from "../constants/MyThemes"
 
@@ -16,17 +17,18 @@ const MyThemeContext = createContext<MyThemeContextType>(null)
 
 export default function RootLayout() {
 
-  const [currentTheme, setTheme] = useState<'light' | 'dark'>('light')
+  const [currentTheme, setTheme] = useState<'light' | 'dark'>('dark')
   const [theme, setCurrentTheme] = useState<MyThemeColorType>(myLightTheme)
 
   const toggleTheme = () => currentTheme == 'dark' ? setTheme('light') : setTheme('dark')
 
   useEffect(() => {
     setCurrentTheme(currentTheme == 'light' ? myLightTheme : myDarkTheme)
+    SystemUI.setBackgroundColorAsync(theme.navbar)
   }, [currentTheme])
 
   return (
-    <MyThemeContext.Provider value={{ currentTheme, theme, setTheme, toggleTheme }} >
+    <MyThemeContext.Provider  value={{ currentTheme, theme, setTheme, toggleTheme }} >
       {/* -- header -- */}
       <ThemedHeader>
         ☠️ Dungeons & Dragons 🐲

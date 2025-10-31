@@ -59,15 +59,15 @@ export default function PaginaDePersonaje() {
                 {currentTheme == 'light' ? "🌞" : "🌛"}{currentTheme}
             </ThemedButton>
             {/* -- informacion principal -- */}
-            <View style={[styles.contentContainer, { borderWidth: 1, marginBottom: 0 }]}>
-                <View style={[styles.horizontalContainer, { flex: 2, borderWidth: 1 }]}>
+            <View style={[styles.contentContainer, { borderWidth: 0, marginBottom: 0 }]}>
+                <View style={[styles.horizontalContainer, { flex: 2, borderWidth: 0, margin: 10, borderRadius: 20 }]}>
                     {/* -- imagen del personaje -- */}
-                    <View style={[{ flex: 1, borderWidth: 1 }]}>
+                    <View style={[{ flex: 1, borderWidth: 0, backgroundColor: theme.overlay, borderRadius: 20 }]}>
                         <Text>imagen del personaje</Text>
                     </View>
-                    <View style={[{ flex: 2, borderWidth: 1 }]}>
+                    <View style={[{ flex: 2, borderWidth: 0, backgroundColor: theme.overlay, borderRadius: 20, marginLeft: 5 }]}>
                         {/* -- nombre y atributos más básico -- */}
-                        <ScrollView style={[{ flex: 6, padding: 10, borderWidth: 1, borderColor: theme.accent }]}>
+                        <ScrollView style={[{ flex: 6, padding: 10, borderWidth: 0, borderColor: theme.accent }]}>
                             <Text style={styles.subtitle}>Jugador: {player_basic_data.player_name}</Text>
                             <Text style={styles.subtitle}>Personaje: {player_basic_data.character_name}</Text>
                             <Text style={styles.subtitle}>Clase: {player_basic_data.class}</Text>
@@ -75,8 +75,7 @@ export default function PaginaDePersonaje() {
                             <Text style={styles.subtitle}>Raza: {player_basic_data.race}</Text>
                             <Text style={styles.subtitle}>Alineamiento{player_basic_data.alignment}</Text>
                             <Text style={styles.subtitle}>Trasfondo: {player_basic_data.background}</Text>
-                            <Text style={styles.subtitle}>XP: {player_basic_data.xp}</Text>
-                            <View style={{ paddingVertical: 20 }}></View>
+                            <Text style={[styles.subtitle, { paddingBottom: 20 }]}>XP: {player_basic_data.xp}</Text>
                         </ScrollView>
 
                     </View>
@@ -87,8 +86,7 @@ export default function PaginaDePersonaje() {
                         tabBarActiveTintColor: theme.text,
                         tabBarInactiveTintColor: theme.muted,
                         tabBarStyle: [styles.tabBar, { backgroundColor: theme.header }],
-                        tabBarLabelStyle: [styles.tabBarText],
-                        tabBarActiveBackgroundColor: theme.accent,
+                        tabBarLabelStyle: [styles.tabBarText]
 
                     }}>
                         <Tabs.Screen name="atributos" options={{ headerShown: false, tabBarIcon: ({ color, size }) => <Ionicons name="accessibility" color={color} size={size} /> }} />
@@ -119,11 +117,18 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     tabBar: {
-        height: 100,
-        marginBottom: 0
+        position: 'absolute',
+        bottom: 20,
+        left: 20,
+        right: 20,
+        backgroundColor: '#222', // color de fondo
+        borderRadius: 40,
+        height: 70,
+        paddingBottom: 10,
+
     },
     tabBarText: {
-        fontSize: 20,
+        fontSize: 15,
         fontWeight: "bold"
     },
     header: {
@@ -165,7 +170,7 @@ const styles = StyleSheet.create({
                 shadowRadius: 4,
             },
             android: {
-                elevation: 4,
+                elevation: 2,
             },
         }),
     }

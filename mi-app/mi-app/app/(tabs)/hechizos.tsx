@@ -19,7 +19,7 @@ export default function IndexTab() {
     const { currentTheme, theme, setTheme, toggleTheme } = useMyTheme()
 
     return (
-        <View style={[{ flex: 1, borderWidth: 1 }]}>
+        <View style={[{ flex: 1, borderWidth: 0 }]}>
             {/* -- hechizos -- */}
             <ScrollView style={[styles.contentContainer, { padding: 20 }]}>
                 <Text style={[styles.title, { fontStyle: "italic" }]}>hechizos</Text>

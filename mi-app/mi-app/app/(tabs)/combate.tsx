@@ -26,7 +26,7 @@ export default function IndexTab() {
     const { currentTheme, theme, setTheme, toggleTheme } = useMyTheme()
 
     return (
-        <View style={[styles.contentContainer, { flex: 1, borderWidth: 1 }]}>
+        <View style={[styles.contentContainer, { flex: 1, borderWidth: 0 }]}>
             {/* -- combate y supervivencia -- */}
             <ScrollView style={[styles.contentContainer, { padding: 20 }]}>
                 <Text style={[styles.title, { fontStyle: "italic" }]}>combate</Text>
