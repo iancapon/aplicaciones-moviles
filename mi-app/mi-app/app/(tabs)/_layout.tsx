@@ -11,8 +11,45 @@ import ThemedButton from '@/components/my-theme/my-theme-boton'
 import ThemedHeader from '@/components/my-theme/my-theme-header'
 import { Ionicons } from '@expo/vector-icons';
 
+type personality = {
+    traits: Array<string>,
+    ideals: Array<string>,
+    bonds: Array<string>,
+    flaws: Array<string>,
+    personal_story?: Array<string>
+}
 
-export default function () {
+const player_personality: personality = {
+    traits: ["Curious"],
+    ideals: ["Knowledge"],
+    bonds: ["Mentor"],
+    flaws: ["Overconfident"],
+}
+
+type basic_data = {
+    player_name: string,
+    character_name: string,
+    class: string,
+    level: number,
+    race: string,
+    alignment: string,
+    background: string,
+    xp: number,
+}
+
+const player_basic_data: basic_data = {
+    player_name: "ian",
+    character_name: "Aelar Silverleaf",
+    class: "Wizard",
+    level: 3,
+    race: "Wood Elf",
+    alignment: "Neutral Good",
+    background: "Sage",
+    xp: 900,
+}
+
+
+export default function PaginaDePersonaje() {
     const { currentTheme, theme, setTheme, toggleTheme } = useMyTheme()
 
     return (
@@ -22,31 +59,30 @@ export default function () {
                 {currentTheme == 'light' ? "🌞" : "🌛"}{currentTheme}
             </ThemedButton>
             {/* -- informacion principal -- */}
-            <View style={[styles.contentContainer, { borderWidth: 1, marginBottom: 50 }]}>
-                <View style={[styles.horizontalContainer, { flex: 1, borderWidth: 1 }]}>
+            <View style={[styles.contentContainer, { borderWidth: 1, marginBottom: 0 }]}>
+                <View style={[styles.horizontalContainer, { flex: 2, borderWidth: 1 }]}>
                     {/* -- imagen del personaje -- */}
                     <View style={[{ flex: 1, borderWidth: 1 }]}>
                         <Text>imagen del personaje</Text>
                     </View>
                     <View style={[{ flex: 2, borderWidth: 1 }]}>
                         {/* -- nombre y atributos más básico -- */}
-                        <View style={[{ flex: 5, borderWidth: 1 }]}>
-                            <Text>nombre y atributos más básicos</Text>
-                        </View>
-                        <View style={[styles.horizontalContainer, { flex: 1, borderWidth: 1 }]}>
-                            {/* -- inventario (popup) -- */}
-                            <View style={[{ flex: 1, borderWidth: 1 }]}>
-                                <Text>inventario (popup)</Text>
-                            </View>
-                            {/* -- personalidad e historia (popup) -- */}
-                            <View style={[{ flex: 1, borderWidth: 1 }]}>
-                                <Text>personalidad e historia</Text>
-                            </View>
-                        </View>
+                        <ScrollView style={[{ flex: 6, padding: 10, borderWidth: 1, borderColor: theme.accent }]}>
+                            <Text style={styles.subtitle}>Jugador: {player_basic_data.player_name}</Text>
+                            <Text style={styles.subtitle}>Personaje: {player_basic_data.character_name}</Text>
+                            <Text style={styles.subtitle}>Clase: {player_basic_data.class}</Text>
+                            <Text style={styles.subtitle}>Nivel: {player_basic_data.level}</Text>
+                            <Text style={styles.subtitle}>Raza: {player_basic_data.race}</Text>
+                            <Text style={styles.subtitle}>Alineamiento{player_basic_data.alignment}</Text>
+                            <Text style={styles.subtitle}>Trasfondo: {player_basic_data.background}</Text>
+                            <Text style={styles.subtitle}>XP: {player_basic_data.xp}</Text>
+                            <View style={{ paddingVertical: 20 }}></View>
+                        </ScrollView>
+
                     </View>
                 </View>
                 {/* -- tablas de informacion -- */}
-                <View style={[{ flex: 3 }]}>
+                <View style={[{ flex: 5 }]}>
                     <Tabs screenOptions={{
                         tabBarActiveTintColor: theme.text,
                         tabBarInactiveTintColor: theme.muted,
@@ -70,8 +106,21 @@ export default function () {
 
 
 const styles = StyleSheet.create({
+    title: {
+        fontSize: 25,
+        fontWeight: "bold"
+    },
+    subtitle: {
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    smalltitle: {
+        fontSize: 20,
+        fontWeight: "bold"
+    },
     tabBar: {
         height: 100,
+        marginBottom: 0
     },
     tabBarText: {
         fontSize: 20,

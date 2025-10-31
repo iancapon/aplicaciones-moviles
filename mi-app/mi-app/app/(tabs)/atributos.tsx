@@ -5,20 +5,78 @@ import ThemedHeader from '@/components/my-theme/my-theme-header'
 import View from '@/components/my-theme/my-theme-view';
 import Text from '@/components/my-theme/my-theme-text';
 
+
+type equipment = Array<string>
+
+const player_equipment: equipment = ["Staff", "Spellbook", "Explorer's Pack"]
+
+type money = { gp: number }
+
+const player_money: money = { gp: 10 }
+
+
+type atributes = {
+    str: number,
+    dxt: number,
+    con: number,
+    int: number,
+    wis: number,
+    cha: number
+}
+
+const player_atributes: atributes = {
+    str: 14,
+    dxt: 16,
+    con: 12,
+    int: 13,
+    wis: 15,
+    cha: 10
+}
+
+
 export default function IndexTab() {
     const { currentTheme, theme, setTheme, toggleTheme } = useMyTheme()
 
     return (
-        <View style={[styles.contentContainer, { flex: 1, borderWidth: 1 }]}>
-            {/* -- atributos principales -- */}
-            <ScrollView>
-                <Text>atributos principales (ScrollView)</Text>
+        <View style={[styles.contentContainer, { flex: 1, padding: 10, borderWidth: 1 }]}>
+            <ScrollView style={[styles.contentContainer, { padding: 10 }]}>
+                {/* -- atributos -- */}
+                <Text style={[styles.title, { fontStyle: "italic" }]}>atributos</Text>
+                <Text style={styles.subtitle}>STR: {player_atributes.str}</Text>
+                <Text style={styles.subtitle}>DXT: {player_atributes.dxt}</Text>
+                <Text style={styles.subtitle}>CON: {player_atributes.con}</Text>
+                <Text style={styles.subtitle}>INT: {player_atributes.int}</Text>
+                <Text style={styles.subtitle}>WIS: {player_atributes.wis}</Text>
+                <Text style={styles.subtitle}>CHA: {player_atributes.cha}</Text>
+                {/* -- equipo -- */}
+                <View style={{ paddingVertical: 10 }}></View>
+                <Text style={[styles.title, { fontStyle: "italic" }]}>equipo</Text>
+                <Text style={styles.subtitle}>{player_equipment.reduce((prev, curr) => prev + '\n' + curr)}</Text>
+                {/* -- dinero -- */}
+                <View style={{ paddingVertical: 10 }}></View>
+                <Text style={[styles.title, { fontStyle: "italic" }]}>dinero</Text>
+                <Text style={styles.subtitle}>en GP: {player_money.gp} $</Text>
+
+                <View style={{ paddingVertical: 50 }}></View>
+
             </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    title: {
+        fontSize: 25,
+        fontWeight: "bold"
+    },
+    subtitle: {
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    smalltitle: {
+        fontSize: 20,
+        fontWeight: "bold"
+    },
     header: {
         flexDirection: "row",
         width: "100%",

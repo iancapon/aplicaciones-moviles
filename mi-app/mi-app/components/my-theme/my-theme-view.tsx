@@ -12,7 +12,7 @@ export default function MyView(props: props) {
     const { currentTheme, theme, setTheme, toggleTheme } = useMyTheme()
 
     return (
-        <View style={[{ backgroundColor: theme.background }, props.style]}>
+        <View style={[{ backgroundColor: theme.background, borderColor:theme.accent }, props.style]}>
             {props.children}
         </View>
     )

@@ -5,19 +5,51 @@ import ThemedHeader from '@/components/my-theme/my-theme-header'
 import View from '@/components/my-theme/my-theme-view';
 import Text from '@/components/my-theme/my-theme-text';
 
+type spells = {
+    cantrips: Array<string>,
+    prepared: Array<string>
+}
+const player_spells: spells = {
+    cantrips: ["Light", "Mage Hand"],
+    prepared: ["Magic Missile", "Detect Magic"]
+}
+
+
 export default function IndexTab() {
     const { currentTheme, theme, setTheme, toggleTheme } = useMyTheme()
 
     return (
         <View style={[{ flex: 1, borderWidth: 1 }]}>
-            <ScrollView>
-                <Text>hechizos (ScrollView)</Text>
+            {/* -- hechizos -- */}
+            <ScrollView style={[styles.contentContainer, { padding: 20 }]}>
+                <Text style={[styles.title, { fontStyle: "italic" }]}>hechizos</Text>
+                {/* cantrips */}
+                <View style={{ paddingVertical: 10 }}></View>
+                <Text style={[styles.title, { fontStyle: "italic" }]}>cantrips:</Text>
+                <Text style={styles.subtitle}>{player_spells.cantrips.reduce((prev, curr) => prev + '\n' + curr)}</Text>
+                {/* prepared */}
+                <View style={{ paddingVertical: 10 }}></View>
+                <Text style={[styles.title, { fontStyle: "italic" }]}>prepared:</Text>
+                <Text style={styles.subtitle}>{player_spells.prepared.reduce((prev, curr) => prev + '\n' + curr)}</Text>
+
             </ScrollView>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    title: {
+        fontSize: 25,
+        fontWeight: "bold"
+    },
+    subtitle: {
+        fontSize: 20,
+        fontWeight: "bold"
+    },
+    smalltitle: {
+        fontSize: 20,
+        fontWeight: "bold"
+    },
     header: {
         flexDirection: "row",
         width: "100%",
