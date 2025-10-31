@@ -1,23 +1,11 @@
-import { Stack } from "expo-router"
-import { createContext, useState } from "react"
+// app/(tabs)/_layout.tsx
+import { Tabs } from "expo-router";
 
-export const ContextoPerfil = createContext<{
-    name: string;
-    setName: React.Dispatch<React.SetStateAction<string>>;
-} | null>(null);
-
-export default function RootLayout() {
-    const [name, setName] = useState("Ian Capon")
-
-    return (
-        <ContextoPerfil.Provider value={{ name, setName }}>
-            <Stack>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-
-                <Stack.Screen name="detalles" options= {{presentation: "modal", animation:"fade_from_bottom"}} />
-
-                <Stack.Screen name="cambiarNombre" options={{ presentation: "transparentModal", animation:"fade",headerShown: false }} />
-            </Stack>
-        </ContextoPerfil.Provider>
-    );
+export default function App() {
+  return (
+    <Tabs>
+      <Tabs.Screen name="EjercicioContador" options={{ title: "EjercicioContador" }} />
+      <Tabs.Screen name="EjercicioTarjetas" options={{ title: "EjercicioTarjetas" }} />
+    </Tabs>
+  );
 }

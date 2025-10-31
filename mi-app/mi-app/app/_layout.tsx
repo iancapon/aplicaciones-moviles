@@ -1,24 +1,49 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { createContext, useState, useContext, useEffect } from 'react';
+import ThemedHeader from '@/components/my-theme/my-theme-header';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { MyThemeColorType, myLightTheme, myDarkTheme } from "../constants/MyThemes"
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+type MyThemeContextType = {
+  currentTheme: 'light' | 'dark'
+  theme: MyThemeColorType
+  setTheme: (mode: 'light' | 'dark') => void
+  toggleTheme: () => void
+} | null
+
+const MyThemeContext = createContext<MyThemeContextType>(null)
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
+
+  const [currentTheme, setTheme] = useState<'light' | 'dark'>('light')
+  const [theme, setCurrentTheme] = useState<MyThemeColorType>(myLightTheme)
+
+  const toggleTheme = () => currentTheme == 'dark' ? setTheme('light') : setTheme('dark')
+
+  useEffect(() => {
+    setCurrentTheme(currentTheme == 'light' ? myLightTheme : myDarkTheme)
+  }, [currentTheme])
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <MyThemeContext.Provider value={{ currentTheme, theme, setTheme, toggleTheme }} >
+      {/* -- header -- */}
+      <ThemedHeader>
+        ☠️ Dungeons & Dragons 🐲
+      </ThemedHeader>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+      <StatusBar style={currentTheme == 'dark' ? 'light' : 'dark'} />
+    </MyThemeContext.Provider >
   );
 }
+
+
+export const useMyTheme = () => {
+  const context = useContext(MyThemeContext)
+  if (!context) {
+    throw new Error('useMyTheme debe usarse dentro de un MyThemeContext.Provider')
+  }
+  return context
+} 
